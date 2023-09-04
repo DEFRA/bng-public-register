@@ -9,7 +9,7 @@ const searchByReference = () => {
     id: 'bng_reference',
     name: 'bng_reference',
     label: {
-      text: 'Search for BNG record by reference',
+      text: 'Search for BNG register by reference',
       classes: 'govuk-!-font-weight-bold'
     },
     hint: {
