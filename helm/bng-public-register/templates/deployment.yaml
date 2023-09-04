@@ -1,0 +1,8 @@
+{{- include "ffc-helm-library.deployment" (list . "bng-public-register.deployment") -}}
+{{- define "bng-public-register.deployment" -}}
+spec:
+  template:
+    spec:
+      containers:
+      - {{ include "ffc-helm-library.container" (list . "bng-public-register.container") }}
+{{- end -}}

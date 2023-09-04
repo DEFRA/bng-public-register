@@ -1,10 +1,22 @@
 services:
-  ffc-template-node:
+  bng-public-register:
     build:
       context: .
       target: production
-    image: ffc-template-node
-    container_name: ffc-template-node
+    image: bng-public-register
+    container_name: bng-public-register
     environment:
-      APPINSIGHTS_CLOUDROLE: ffc-template-node-local
+      APPINSIGHTS_CLOUDROLE: bng-public-register-local
       APPINSIGHTS_CONNECTIONSTRING: ${APPINSIGHTS_CONNECTIONSTRING}
+      PUBLIC_REGISTRY_AZURE_STORAGE_CONNECTION_STRING: ${AZURE_STORAGE_ACCOUNT_NAME:-devstoreaccount1}
+      PUBLIC_REGISTRY_AZURE_STORAGE_ACCOUNT_NAME:
+      PUBLIC_REGISTRY_AZURE_STORAGE_CONTAINER:
+      PUBLIC_REGISTRY_JSON:
+      PUBLIC_REGISTRY_AZURE_STORAGE_USE_CONNECTION_STRING: "true"
+      PUBLIC_REGISTRY_AZURE_STORAGE_CREATE_CONTAINERS: "true"
+
+  bng-public-register-azurite:
+    image: mcr.microsoft.com/azure-storage/azurite:3.23.0
+    command: "azurite --blobHost 0.0.0.0 --queueHost 0.0.0.0 --tableHost 0.0.0.0 --loose"
+    labels:
+      com.docker.compose.pay.role: bng-public-register-azurite

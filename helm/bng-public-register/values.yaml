@@ -1,9 +1,9 @@
 environment: production
 environmentCode:
-name: ffc-template-node
-namespace: ffc-demo
-workstream: ffc-demo
-image: ffc-template-node
+name: bng-public-register
+namespace: bng-public
+workstream: bng-public
+image: bng-public-register
 
 labels:
   component: service
@@ -12,10 +12,10 @@ appInsights:
   connectionString:
 
 containerConfigMap:
-  name: ffc-template-node-config-map
+  name: bng-public-register-config-map
 
 containerSecret:
-  name: ffc-template-node-container-secret
+  name: bng-public-register-container-secret
   type: Opaque
 
 deployment: {}

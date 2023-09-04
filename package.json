@@ -1,8 +1,8 @@
 {
-  "name": "ffc-template-node",
+  "name": "bng-public-register",
   "version": "0.1.0",
-  "description": "description-of-project-goes-here",
-  "homepage": "https://github.com/DEFRA/ffc-template-node",
+  "description": "Web frontend for BNG Public Register",
+  "homepage": "https://github.com/DEFRA/bng-public-register",
   "main": "app/index.js",
   "scripts": {
     "pretest": "npm run test:lint",
@@ -17,8 +17,13 @@
   "contributors": [],
   "license": "OGL-UK-3.0",
   "dependencies": {
+    "@azure/identity": "3.1.4",
+    "@azure/msal-node": "1.14.6",
+    "@azure/storage-blob": "12.13.0",
     "@hapi/hapi": "20.2.2",
-    "applicationinsights": "2.3.5"
+    "applicationinsights": "2.3.5",
+    "joi": "17.4.0"
+
   },
   "devDependencies": {
     "jest": "29.2.2",
