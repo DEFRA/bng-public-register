@@ -1,9 +1,17 @@
 const { getJsonReport } = require('../storage')
 const storageConfig = require('../config/storage')
+const ViewModel = require('./models/search')
 
-module.exports = {
+module.exports = [{
   method: 'GET',
   path: '/search',
+  handler: async (request, h) => {
+    return h.view('search', new ViewModel())
+  }
+},
+{
+  method: 'GET',
+  path: '/search/query',
   options: {
     handler: async (_request, h) => {
         const response = await getJsonReport()
@@ -26,4 +34,4 @@ module.exports = {
         return h.response(results).code(200)
     }
   }
-}
+}]
