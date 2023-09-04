@@ -1,3 +1,3 @@
 services:
-  ffc-template-node:
+  bng-public-register:
     command: npm run start:debug

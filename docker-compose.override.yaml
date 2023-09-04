@@ -2,11 +2,11 @@
 # to provide dependencies and expose ports for local testing
 
 services:
-  ffc-template-node:
+  bng-public-register:
     build:
       target: development
-    image: ffc-template-node-development
-    container_name: ffc-template-node-development
+    image: bng-public-register-development
+    container_name: bng-public-register-development
     ports:
       - "3000:3000"
       - "9229:9229"
