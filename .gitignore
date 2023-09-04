@@ -6,3 +6,5 @@ helm/**/*.lock
 .env
 
 dist
+
+layout.njk
