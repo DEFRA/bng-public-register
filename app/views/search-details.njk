@@ -16,5 +16,98 @@
     <div class="govuk-grid-column-full">
       <span class="govuk-caption-l">{{ bngReference }}</span>
       <h1 class="govuk-heading-l">Details</h1>
+      <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+              Contacts
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+          {% for contact in record.contacts.contact %}
+            <p class="govuk-body">Name: {{contact.name}}</p>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+              Geometry:
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+            <p class="govuk-body">OS easting: {{record.geometry.OS_easting}}</p>
+            <p class="govuk-body">OS northing: {{record.geometry.OS_northing}}</p>
+        </div>
+      </div>
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+              Landowner
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+          <p class="govuk-body">Planning ref number: {{record.landowner.planning_ref_number}}</p>
+          <p class="govuk-body">S106: {{record.landowner.S106}}</p>
+          <p class="govuk-body">Conservation covenant: {{record.landowner.conservation_covenant}}</p>
+          <p class="govuk-body">Concov end date: {{record.landowner.concov_end_date}}</p>
+        </div>
+      </div>
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+              Allocation
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
+          <p class="govuk-body">OS easting: {{record.allocation.geometry.OS_easting}}</p>
+          <p class="govuk-body">OS northing: {{record.allocation.geometry.OS_northing}}</p>
+        </div>
+      </div>
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+              Habitats
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-4">
+          {% for habitat in record.habitats.habitat %}
+            <p class="govuk-body">Allocated: {{habitat.allocated}}</p>
+            <p class="govuk-body">Habitatsize: {{habitat.habitat_size}}</p>
+            <p class="govuk-body">Measure: {{habitat.measure}}</p>
+            <p class="govuk-body">Habitat: {{habitat.habitat}}</p>
+            <p class="govuk-body">Habitat group: {{habitat.habitat_group}}</p>
+            <p class="govuk-body">Condition: {{habitat.condition}}</p>
+            <p class="govuk-body">------------------------------------------------------------------------------------------------</p>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+              Documents
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-4">
+          {% for document in record.documents.document %}
+            <p class="govuk-body">Doc path: {{document.doc_path}}</p>
+            <p class="govuk-body">Type: {{document.type}}</p>
+            <p class="govuk-body">------------------------------------------------------------------------------------------------</p>
+          {% endfor %}
+        </div>
+      </div>
     </div>
+  </div>
 {% endblock %}

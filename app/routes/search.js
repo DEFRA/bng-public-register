@@ -39,6 +39,11 @@ module.exports = [{
   path: '/search/results/details/{bngReference}',
   handler: async (request, h) => {
     const bngReference = request.params.bngReference
-    return h.view('search-details', { bngReference })
+    const response = await getJsonReport()
+    const parseResponse = JSON.parse(response)
+
+    const record = parseResponse?.BNGPublicRegister.BNGSite.find(p => p.bng_reference === bngReference)
+    console.log(bngReference, record)
+    return h.view('search-details', { bngReference, record })
   }
 }]
