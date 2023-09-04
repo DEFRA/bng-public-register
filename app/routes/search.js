@@ -1,5 +1,4 @@
 const { getJsonReport } = require('../storage')
-const storageConfig = require('../config/storage')
 const ViewModel = require('./models/search')
 
 module.exports = [{
@@ -14,24 +13,32 @@ module.exports = [{
   path: '/search/query',
   options: {
     handler: async (_request, h) => {
-        const response = await getJsonReport()
-        const parseResponse = JSON.parse(response)
+      const response = await getJsonReport()
+      const parseResponse = JSON.parse(response)
 
-        const queryValues = _request.query
-        const filters = [] 
+      const bngReference = _request.query.bng_reference
+      const queryValues = _request.query
+      const filters = []
 
-        for (const key in queryValues) {
-          if (Object.hasOwnProperty.bind(queryValues)(key)) {
-            const newObj = { [key]: queryValues[key] };
-            filters.push(newObj);
-          }
+      for (const key in queryValues) {
+        if (Object.hasOwnProperty.bind(queryValues)(key)) {
+          const newObj = { [key]: queryValues[key] }
+          filters.push(newObj)
         }
+      }
 
-        const results = parseResponse?.BNGPublicRegister.BNGSite.filter(p => 
-          filters.every(f=> Object.keys(f).every(k => p[k] === f[k]))
-        )
+      const results = parseResponse?.BNGPublicRegister.BNGSite.filter(p =>
+        filters.every(f => Object.keys(f).every(k => p[k] === f[k]))
+      )
 
-        return h.response(results).code(200)
+      return h.view('search-results', { results, bngReference })
     }
+  }
+}, {
+  method: 'GET',
+  path: '/search/results/details/{bngReference}',
+  handler: async (request, h) => {
+    const bngReference = request.params.bngReference
+    return h.view('search-details', { bngReference })
   }
 }]

@@ -1,0 +1,20 @@
+{% extends 'layouts/layout.njk' %}
+{% from "macros/search-box.njk" import searchBox %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{% block content %}
+  {{ govukBreadcrumbs({
+      items: [{
+        text: "Home",
+        href: "/"
+      }, {
+        text: "Search",
+        href: "/search"
+      }]
+    })}}
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <span class="govuk-caption-l">{{ bngReference }}</span>
+      <h1 class="govuk-heading-l">Details</h1>
+    </div>
+{% endblock %}
